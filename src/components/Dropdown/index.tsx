@@ -19,10 +19,10 @@ const Dropdown = ({ selectHandler }: props) => {
   const response: NamedAPIResourceList = api.response;
 
   return (
-    <div>
-      {loading && <div>Please wait. Loading Pokemon...</div>}
-      {response && !loading && (
-        <select onChange={(e) => selectHandler(e.target.value)}>
+    <div className="selector">
+      {loading && <div className="selector__loading">Please wait. Loading Pokemon...</div>}
+      {response && !loading && !error (
+        <select className="selector__input" onChange={(e) => selectHandler(e.target.value)}>
             <option value="">Select a pokemon</option>
           {response.results?.map(({ name }) => (
             <option key={name}>{name}</option>
@@ -30,7 +30,7 @@ const Dropdown = ({ selectHandler }: props) => {
         </select>
       )}
       {error && !loading && (
-        <div> Something went wrong! Please try refreshing the page</div>
+        <div className="error selector__error-message"> Something went wrong! Please try refreshing the page</div>
       )}
     </div>
   );

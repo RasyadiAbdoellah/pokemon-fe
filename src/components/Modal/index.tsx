@@ -23,9 +23,9 @@ const Modal = ({ pokemon, closeHandler = () => {} }: props) => {
   );
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className="overlay">
+      <div className="modal">
+        <div className="modal__heading">
           <h2>Offer details</h2>
           <button
             onClick={() => {
@@ -35,6 +35,9 @@ const Modal = ({ pokemon, closeHandler = () => {} }: props) => {
           >
             X
           </button>
+        </div>
+        <div className="modal__body">
+          
         </div>
         <p>Placing an offer on:</p>
         <h3>{capitalize(pokemon.name)}</h3>
@@ -69,7 +72,7 @@ const Modal = ({ pokemon, closeHandler = () => {} }: props) => {
                 setInput(value);
               }}
             />
-            {!!inputError && <p className="error">{inputError}</p>}
+            {!!inputError && <p className="error input-error">{inputError}</p>}
           </div>
           <input
             className="input-submit"
@@ -78,7 +81,7 @@ const Modal = ({ pokemon, closeHandler = () => {} }: props) => {
           ></input>
         </form>
         {error && (
-          <p className="error">Uh oh! Unable to process the transaction</p>
+          <p className="error modal__error">Uh oh! Unable to process the transaction</p>
         )}
       </div>
     </div>
