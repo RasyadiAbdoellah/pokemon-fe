@@ -1,0 +1,23 @@
+@import "styles/variables";
+
+.dropdown {
+  max-width: $max-width;
+  margin-bottom: $spacing-md;
+  padding: $spacing-md;
+  background-color: $cyan-dark;
+  border-radius: $radius-sm;
+  color: white;
+  box-shadow: $shadow;
+  label {
+    margin-bottom: $spacing-xs;
+    display: block;
+  }
+  select {
+    width: 100%;
+    padding: $spacing-xs;
+    background-color: white;
+    border: 0;
+    border-radius: $radius-sm;
+    font-size: $base-size;
+  }
+}

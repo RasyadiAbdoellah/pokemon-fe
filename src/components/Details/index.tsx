@@ -1,12 +1,14 @@
 import type { Pokemon } from "pokenode-ts";
-import { useApi, capitalize } from "lib";
+import { capitalize } from "lib";
+import './Details.scss'
+import { MouseEventHandler } from "react";
 
 type props = {
   pokemon: Pokemon;
-  offerHandler?: Function;
+  offerHandler?: MouseEventHandler;
 };
 
-const formatStatName = (string: string) => {
+const formatString = (string: string) => {
   let formattedString;
   if (string.length === 2) {
     formattedString = string.toUpperCase();
@@ -25,88 +27,93 @@ const Details = ({ pokemon, offerHandler = () => {} }: props) => {
   return (
     <div>
       <div className="detail">
-        <img
-          className="detail__image"
-          src={
-            pokemon.sprites.other?.["official-artwork"].front_default ||
-            undefined
-          }
-        />
-        <div className="detail__content">
+        <div className="detail__body">
+          <img
+            className="detail__image"
+            src={
+              pokemon.sprites.other?.["official-artwork"].front_default ||
+              undefined
+            }
+          />
 
-          <h1>You've chosen {capitalize(pokemon?.name)}!</h1>
+          <div className="detail__content">
 
-          <h2>Abilities</h2>
+            <h1>You've chosen {capitalize(pokemon?.name)}!</h1>
 
-          <ul className="pill-group abilities">
-            {pokemon.abilities.map((ability) => (
-              <li key={ability.ability.name}>{ability.ability.name}</li>
-            ))}
-          </ul>
+            <h2>Abilities</h2>
 
-          <h2>Stats</h2>
-
-          <ul className="pill-group stats">
-            {pokemon.stats.map((statObj) => {
-              const statName = formatStatName(statObj.stat.name);
-              return (
-                <li key={statName}>
-                  {statName} <span>{statObj.base_stat}</span>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="detail__more-info">
-
-            <div className="info-group">
-              <p>Height</p>
-              <p>
-                {
-                  pokemon.height *
-                    10 /*height is in decimetre, convert to centimetre*/
-                }
-                cm
-              </p>
-            </div>
-
-            <div className="info-group">
-              <p>Weight</p>
-              <p>
-                {
-                  pokemon.weight /
-                    10 /*weight is in hectogram, convert to kilogram*/
-                }
-                kg
-              </p>
-            </div>
-
-            <div className="info-group">
-              <p>ID</p>
-              <p>{pokemon.id}</p>
-            </div>
-
-            <div className="info-group">
-              <p>Species</p>
-              <p>{pokemon.species.name}</p>
-            </div>
-
-            <div className="info-group">
-              <p>Types</p>
-              {pokemon.types.map((type) => (
-                <span key={type.type.name}>{type.type.name} </span>
+            <ul className="pill-group abilities">
+              {pokemon.abilities.map((ability) => (
+                <li key={ability.ability.name}>{formatString(ability.ability.name)}</li>
               ))}
-            </div>
+            </ul>
 
-            <div className="info-group">
-              <p>Base Experience</p>
-              <p>{pokemon.base_experience}</p>
+            <h2>Stats</h2>
+
+            <ul className="pill-group stats">
+              {pokemon.stats.map((statObj) => {
+                const statName = formatString(statObj.stat.name);
+                return (
+                  <li key={statName}>
+                    {statName} <span>{statObj.base_stat}</span>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="detail__more-info">
+
+              <div className="info-group">
+                <p className="info-group__heading">Height</p>
+                <p>
+                  {
+                    pokemon.height *
+                      10 /*height is in decimetre, convert to centimetre*/
+                  }
+                  cm
+                </p>
+              </div>
+
+              <div className="info-group">
+                <p className="info-group__heading">Weight</p>
+                <p>
+                  {
+                    pokemon.weight /
+                      10 /*weight is in hectogram, convert to kilogram*/
+                  }
+                  kg
+                </p>
+              </div>
+
+              <div className="info-group">
+                <p className="info-group__heading">ID</p>
+                <p>{pokemon.id.toString().padStart(3, '0')}</p>
+              </div>
+
+              <div className="info-group">
+                <p className="info-group__heading">Species</p>
+                <p>{pokemon.species.name}</p>
+              </div>
+
+              <div className="info-group">
+                <p className="info-group__heading">Types</p>
+                <p>
+                  {pokemon.types.map((type) => (
+                    <span key={type.type.name}>{type.type.name} </span>
+                  ))}
+                </p>
+              </div>
+
+              <div className="info-group">
+                <p className="info-group__heading">Base Experience</p>
+                <p>{pokemon.base_experience}</p>
+              </div>
             </div>
           </div>
         </div>
-        
+
         <div className="detail__footer">
-          <button onClick={() => offerHandler()}>Make an Offer</button>
+          <button onClick={offerHandler} className="btn btn-lg">Make an Offer</button>
         </div>
       </div>
     </div>

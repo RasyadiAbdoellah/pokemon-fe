@@ -1,0 +1,21 @@
+$base-size: 1rem;
+$max-width: 75rem;
+$radius-sm : 5px;
+
+$spacing-xs: $base-size * 0.5;
+$spacing-sm: $base-size * 0.75;
+$spacing-md: $base-size;
+$spacing-lg: $base-size * 1.25;
+$spacing-xl: $base-size * 1.5;
+
+// Colours
+$grey-dark: #838383;
+$grey: #efefef;
+$grey-light: #faf8ff;
+$cyan-dark: #369cc5;
+$cyan:#46b6e1;
+$cyan-light: #d5f4fb;
+$green: #25a14d;
+$orange: #ec863b;
+
+$shadow: 0 0 6px adjust-color($grey-dark, $alpha: -0.5);

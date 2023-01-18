@@ -9,7 +9,7 @@ export default defineConfig({
     alias: {
       lib: path.resolve('src/lib'),
       components: path.resolve('src/components'),
-      
+      styles: path.resolve('src/styles'),
     }
   }
 })

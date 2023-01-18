@@ -26,6 +26,7 @@ export function useApi(
           setResponse(data);
         })
         .catch((error) => {
+          setLoading(false)
           setError(error);
         });
     }

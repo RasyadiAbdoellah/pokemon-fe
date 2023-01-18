@@ -1,0 +1,67 @@
+@import './variables.scss';
+
+body {
+  background-color: $grey-light;
+}
+
+* {
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+  margin-bottom: $spacing-xs;
+}
+
+h1 {
+  color: $cyan-dark
+}
+
+h2 {
+  color: $grey-dark;
+}
+
+.App {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+button, .btn, input[type=submit] {
+  padding: $spacing-md $spacing-lg;
+  border: 0;
+  border-radius: $radius-sm;
+  color: white;
+  background-color: $orange;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: adjust-color($color: $orange, $lightness: -10%);
+  }
+
+  &:active {
+    background-color: adjust-color($color: $orange, $lightness: -5%);
+  }
+}
+
+.btn {
+  &-sm {
+    font-size: 0.8rem;
+    padding: $spacing-xs $spacing-sm !important;
+  }
+  &-lg {
+    font-size: 1.25rem;
+  }
+}
+
+.error {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: red;
+  width: 100%;
+}

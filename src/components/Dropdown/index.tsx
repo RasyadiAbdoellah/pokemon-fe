@@ -1,6 +1,8 @@
-import { useApi } from "lib";
+import { capitalize, useApi } from "lib";
 import type { NamedAPIResourceList } from "pokenode-ts";
 import { useState } from "react";
+
+import "./Dropdown.scss";
 
 type props = {
   selectHandler: Function;
@@ -19,18 +21,28 @@ const Dropdown = ({ selectHandler }: props) => {
   const response: NamedAPIResourceList = api.response;
 
   return (
-    <div className="selector">
-      {loading && <div className="selector__loading">Please wait. Loading Pokemon...</div>}
-      {response && !loading && !error (
-        <select className="selector__input" onChange={(e) => selectHandler(e.target.value)}>
-            <option value="">Select a pokemon</option>
-          {response.results?.map(({ name }) => (
-            <option key={name}>{name}</option>
-          ))}
-        </select>
+    <div className="dropdown">
+      {loading && (
+        <div className="dropdown__loading">Please wait. Loading Pokémon...</div>
+      )}
+      {response && !loading && !error && (
+        <div className="dropdown__input">
+          <label>Select a Pokémon for purchase:</label>
+          <select onChange={(e) => selectHandler(e.target.value)}>
+            <option value="">Select a Pokémon</option>
+            {response.results?.map(({ name }) => (
+              <option key={name} value={name}>
+                {capitalize(name)}
+              </option>
+            ))}
+          </select>
+        </div>
       )}
       {error && !loading && (
-        <div className="error selector__error-message"> Something went wrong! Please try refreshing the page</div>
+        <div className="error selector__error-message">
+          {" "}
+          Something went wrong! Please try refreshing the page
+        </div>
       )}
     </div>
   );
