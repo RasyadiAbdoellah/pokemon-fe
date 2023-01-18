@@ -10,6 +10,7 @@ export default defineConfig({
       lib: path.resolve('src/lib'),
       components: path.resolve('src/components'),
       styles: path.resolve('src/styles'),
+      assets: path.resolve('src/assets'),
     }
   }
 })

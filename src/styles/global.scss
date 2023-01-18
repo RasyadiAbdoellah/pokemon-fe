@@ -28,7 +28,7 @@ h2 {
 
 .App {
   margin: 0 auto;
-  width: fit-content;
+  width: $max-width;
 }
 
 button, .btn, input[type=submit] {

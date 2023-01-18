@@ -1,9 +1,13 @@
+import { useApi } from "lib";
+import { Pokemon } from "pokenode-ts";
+import { useEffect, useState } from "react";
+
+import 'styles/global.scss'
+import logo from 'assets/page-logo.svg'
+
 import Details from "components/Details";
 import Dropdown from "components/Dropdown";
 import Modal from "components/Modal";
-import { useApi } from "lib";
-import { Pokemon } from "pokenode-ts";
-import { useCallback, useEffect, useMemo, useState } from "react";
 
 function App() {
   const [selectedPokemon, setSelectedPokemon] = useState("");
@@ -21,12 +25,19 @@ function App() {
     if (selectedPokemon !== "") {
       api.triggerFetch();
     }
-  }, [selectedPokemon]);
 
-  console.log(thePokemon);
+    if (showModal) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+
+  }, [selectedPokemon, showModal]);
+
 
   return (
     <div className="App">
+      <img className="logo" src={logo} />
       <Dropdown selectHandler={setSelectedPokemon} />
       {thePokemon && (
         <Details pokemon={thePokemon} offerHandler={() => setShowModal(true)} />
