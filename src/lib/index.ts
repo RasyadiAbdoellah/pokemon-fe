@@ -1,6 +1,10 @@
-import { Pokemon, NamedAPIResourceList } from "pokenode-ts";
 import { useEffect, useState } from "react";
 
+// custom hook for handling API calls. It's meant to be simple and generic.
+// The hook default behaviour sends a get request to the URL on mount.
+// the request method, body, and other properties can be modified by passing a fetchOptions object.
+// Fetch on mount can also be deactivated by passing false as the last argument
+// returns the loading status, response, error, and a triggerFetch function to manually trigger a fetch
 export function useApi(
   url: string,
   fetchOptions: {} = { method: "get" },
@@ -35,13 +39,14 @@ export function useApi(
   return { loading, response, error, triggerFetch };
 }
 
+//helper func to capitalize a given string
 export function capitalize(word: string): string {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 // below is the response for https://pokeapi.co/api/v2/pokemon/bulbasaur
-// the Details is purely visual and displays the response content, so the easiest way
-// to ensure visual testing works is by providing the actual API response
+// Details is purely visual and displays the response content, so the easiest way
+// to ensure successful visual tests is by providing the actual API response
 export const mockResponse = {
   abilities: [
     {
