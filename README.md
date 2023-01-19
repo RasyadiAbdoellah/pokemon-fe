@@ -11,13 +11,13 @@ Clone the repo to local. Once downloaded, use `npm install` or `yarn install` to
 
 #### using NPM
 
-- `npm run dev`: spin up a dev server at `http://localhost:5173/
+- `npm run dev`: spin up a dev server at http://localhost:5173/
 - `npm run build`: creates a ready-to-use build in `./dist`
 - `npm run preview`: spin up local server using build files
 
 #### using Yarn
 
-- `yarn dev`: spin up a dev server at `http://localhost:5173/
+- `yarn dev`: spin up a dev server at http://localhost:5173/
 - `yarn build`: creates a ready-to-use build in `./dist`
 - `yarn preview`: spin up local server using build files
 
